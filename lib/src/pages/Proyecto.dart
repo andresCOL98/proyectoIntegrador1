@@ -9,10 +9,23 @@ class Proyecto extends StatefulWidget {
 class _proyectoState extends State<Proyecto> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: ListTile(
-         leading: Icon(Icons.person),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Proyecto')
+      ),
+      body: Container(
+       child: Column(
+         children: <Widget>[
+           FloatingActionButton(
+             child: Text('Crear Proyectos'),
+             
+             onPressed: () {},
+           ),
+           
+         ],
        )
+    ),
+
     );
   }
 }

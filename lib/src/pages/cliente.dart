@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proyectando_mobile/src/pages/crearCliente.dart';
+import 'package:proyectando_mobile/src/pages/editarCliente.dart';
 
 class Cliente extends StatelessWidget {
   const Cliente({Key key}) : super(key: key);
@@ -102,7 +103,7 @@ class Cliente extends StatelessWidget {
                 onTap: () {
                     final route = MaterialPageRoute(
                       builder: (context){
-                        return CrearCliente();
+                        return EditarCliente();
                       }
                     );
                     Navigator.push(context, route);

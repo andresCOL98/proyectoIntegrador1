@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:proyectando_mobile/src/providers/cliente_provider.dart';
 
-class editarCliente extends StatefulWidget {
-  editarCliente({Key key}) : super(key: key);
+class EditarCliente extends StatefulWidget {
 
-  _editarClienteState createState() => _editarClienteState();
+  _EditarClienteState createState() => _EditarClienteState();
 }
 
-class _editarClienteState extends State<editarCliente> {
+class _EditarClienteState extends State<EditarCliente> {
+  final clienteProvider = ClienteProviders();
   @override
   Widget build(BuildContext context) {
+    clienteProvider.getClientes();
     return Scaffold(
          appBar: AppBar(
            title: Text('editarCliente'),

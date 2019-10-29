@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
 
         return Provider(
           child: MaterialApp(
+            
             debugShowCheckedModeBanner: false,
             title: 'Gestor de proyectos',
             initialRoute: 'Login',

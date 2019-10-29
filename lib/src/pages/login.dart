@@ -87,14 +87,7 @@ class LoginState extends State<Login> {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () {
-                      // final route = MaterialPageRoute(
-                      //   builder: (context){
-                      //     return PaginaInicio();
-                      //   }
-                      // );
-                      // Navigator.push(context, route);
-                      _logearse(bloc, context);
-                      
+                      _logearse(bloc, context);                     
                   },
                   child: Center(
                     child: Text("INICIAR SESIÓN",

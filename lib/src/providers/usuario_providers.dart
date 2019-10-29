@@ -44,15 +44,14 @@ class UsuarioProviders{
     final authData = {
       'username' : userName,
       'password' : contrasena,
-      'returnSecureToken' : true
+      // 'returnSecureToken' : true
     };
 
     var uri = new Uri.http('proyecto.darevalo.me', '/api/login');
     
     final resp = await http.post(
       uri,
-      body: json.encode(authData),
-      headers: {HttpHeaders.contentTypeHeader : 'application/json'}
+      body: authData,
     );
     
     Map <String, dynamic> decodedData = json.decode(resp.body);

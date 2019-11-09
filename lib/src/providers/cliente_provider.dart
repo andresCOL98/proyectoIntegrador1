@@ -36,10 +36,14 @@ class ClienteProviders {
 
     final resp = await http.get(
       uri,
-      headers: {HttpHeaders.contentTypeHeader : 'application/json', HttpHeaders.authorizationHeader: 'Basic $_prefs.token'}
-      );
-    print(_prefs.token);
-    print(resp.statusCode);
+      headers: {HttpHeaders.contentTypeHeader : 'application/json',
+      HttpHeaders.authorizationHeader : 'Bearer '+_prefs.token.toString()}  
+    );
+    // print(_prefs.token);
+    print(resp.request.headers.values);
+    print(resp.body);
+
+
 
   }
 

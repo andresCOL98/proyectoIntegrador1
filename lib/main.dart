@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             
             debugShowCheckedModeBanner: false,
             title: 'Gestor de proyectos',
-            initialRoute: 'Login',
+            initialRoute: 'inicio',
             routes: {
               'Login' : (BuildContext context) => Login(),
               'start' : (BuildContext context) => Start(),

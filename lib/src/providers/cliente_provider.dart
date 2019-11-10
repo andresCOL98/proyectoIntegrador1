@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:proyectando_mobile/src/models/cliente_model.dart';
 import 'package:proyectando_mobile/src/preferencias_usuario/preferencias_usuario.dart';
 
 class ClienteProviders {
@@ -30,7 +31,7 @@ class ClienteProviders {
 
   }
 
-  Future <Map<String , dynamic>>getClientes() async {
+  Future<List<ClienteModel>>getClientes() async {
 
     var uri = new Uri.http('proyecto.darevalo.me', '/api/clientes');
 
@@ -39,12 +40,21 @@ class ClienteProviders {
       headers: {HttpHeaders.contentTypeHeader : 'application/json',
       HttpHeaders.authorizationHeader : 'Bearer '+_prefs.token.toString()}  
     );
-    // print(_prefs.token);
-    print(resp.request.headers.values);
-    print(resp.body);
 
+    print("GET: "+resp.body);
 
+    final decodeData =  json.decode(resp.body);
+    final List<ClienteModel> listCLienteModel = new List();
 
+    print(decodeData);
+    decodeData.forEach( (clave){
+      print(clave);
+      final clienteTemp = ClienteModel.fromJson(clave);
+      listCLienteModel.add(clienteTemp);
+      
+    });
+
+    return listCLienteModel;
   }
 
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectando_mobile/src/models/cliente_model.dart';
 import 'package:proyectando_mobile/src/providers/cliente_provider.dart';
 
 class EditarCliente extends StatefulWidget {
@@ -7,43 +8,77 @@ class EditarCliente extends StatefulWidget {
 }
 
 class _EditarClienteState extends State<EditarCliente> {
+  
+  
   final clienteProvider = ClienteProviders();
+
   @override
   Widget build(BuildContext context) {
-    clienteProvider.getClientes();
     return Scaffold(
          appBar: AppBar(
            title: Text('editarCliente'),
          ),
-         body: Scrollbar(
-           child: ListView(
-             children: <Widget>[
-               
-             ],
-           ),
-         ),
+         body: _lista()
     );
   }
-}
 
-List<Widget> _listClientes(List<dynamic> data){
+  Widget _lista() {
 
-  final List<Widget> opciones = [];
+    return FutureBuilder(
+      future: clienteProvider.getClientes(),
+      builder: ( context, AsyncSnapshot<List<ClienteModel>> snapshot){
+        print(snapshot.data[0].clienteName);
+        if(snapshot.hasData){
 
-  data.forEach ( (opt) {
+          final clientes = snapshot.data;
 
-    final widgetTemp = ListTile(
-      title: Text(opt['texto']),
-      leading: Icon(Icons.work),
-      trailing: Icon(Icons.edit),
-      onTap: (){},
+          return ListView.builder(
+            itemCount: clientes.length,
+            itemBuilder: (context, i) => _crearItem(clientes[i]),
+          );
+
+        }else{
+          return Center( child: CircularProgressIndicator(),);
+        }
+
+      },
+
+    );
+  }
+
+  Widget _crearItem(ClienteModel cliente){
+
+    return ListTile(
+      title: Text(cliente.clienteName),
+      subtitle: Text(cliente.email),
     );
 
-    opciones..add(widgetTemp)
-            ..add(Divider());
+  }
 
-  });
+  List<Widget> _listClientes(List<ClienteModel> data){
 
-  return opciones;
+    final List<Widget> opciones = [];
+
+    data.forEach ( (opt) {
+
+      final widgetTemp = ListTile(
+        title: Text(opt.clienteName),
+        leading: Icon(Icons.work),
+        trailing: Icon(Icons.edit),
+        onTap: (){},
+      );
+
+      opciones..add(widgetTemp)
+              ..add(Divider());
+
+    });
+
+    return opciones;
+
+  }
 
 }
+
+
+
+

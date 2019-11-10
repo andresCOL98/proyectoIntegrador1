@@ -18,7 +18,6 @@ class UsuarioProviders{
       'returnSecureToken' : true
     };
     var uri = new Uri.http('proyecto.darevalo.me', '/api/token/verify');
-    print(PreferenciasUsuario().token);
     
     final resp = await http.post(
       uri,
@@ -27,7 +26,6 @@ class UsuarioProviders{
     );
     
     Map <String, dynamic> decodedData = json.decode(resp.body);
-    print(decodedData);
 
     if(decodedData.containsKey('detail')){
       print('acá llegó');
@@ -55,7 +53,6 @@ class UsuarioProviders{
     );
     
     Map <String, dynamic> decodedData = json.decode(resp.body);
-    print(decodedData);
 
     if(decodedData.containsKey('access')){
 

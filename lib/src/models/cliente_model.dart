@@ -8,33 +8,39 @@ class ClienteModel {
 
     String clienteName;
     String email;
-    String contrasena;
-    String numero;
-    String nameUser;
-    String direccion;
-    String nitEmpresa;
+    String userName;
+    String password;
+    String number;
+    String direction;
+    String nitCompany;
 
     ClienteModel({
         this.clienteName,
         this.email,
-        this.contrasena,
-        this.numero,
-        this.nitEmpresa
+        this.userName,
+        this.password,
+        this.number,
+        this.direction,
+        this.nitCompany
     });
 
     factory ClienteModel.fromJson(Map<String, dynamic> json) => new ClienteModel(
         clienteName   : json["clienteName"],
         email         : json["email"],
-        contrasena    : json["contrasena"],
-        numero        : json["numero"],
-        nitEmpresa    : json["nitEmpresa"]
+        userName      : json["userName"],
+        password      : json["password"],
+        number        : json["number"],
+        direction     : json["direction"],
+        nitCompany    : json["nitCompany"]
     );
 
     Map<String, dynamic> toJson() => {
         "clienteName"   : clienteName,
         "email"         : email,
-        "contrasena"    : contrasena,
-        "numero"        : numero,
-        "nitEmpresa"    : nitEmpresa
+        "userName"      : userName,
+        "password"      : password,
+        "number"        : number,
+        "direction"     : direction,
+        "nitCompany"    : nitCompany
     };
 }
